@@ -1,0 +1,8 @@
+* {
+    font-family: "Undertale";
+}
+
+@font-face {
+    font-family: "Undertale";
+    src: local("Undertale"), url("/fonts/undertale.ttf");
+}
