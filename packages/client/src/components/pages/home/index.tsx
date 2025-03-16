@@ -1,7 +1,18 @@
-import { Button, Container, List, Stack, Text, Title } from "@mantine/core";
-import { IconArrowRight, IconLogin2 } from "@tabler/icons-react";
+import {
+    Button,
+    Container,
+    Group,
+    List,
+    Popover,
+    Stack,
+    Text,
+    Title,
+} from "@mantine/core";
+import { IconArrowRight, IconBooks, IconLogin2 } from "@tabler/icons-react";
+import { useNavigate } from "@tanstack/react-router";
 
 export const HomeHeader = () => {
+    const navigate = useNavigate();
     return (
         <Stack ta="center" align="center" justify="center" h="90vh" bd={3}>
             <Title order={1} fz="h3" ff="undertale">
@@ -12,9 +23,24 @@ export const HomeHeader = () => {
                 {"!"}
             </Title>
             <Text>A place where all the fluffy boi's meet :3</Text>
-            <Button size="lg" rightSection={<IconLogin2 />}>
-                {"Join Us ".toUpperCase()}
-            </Button>
+            <Group>
+                <Popover>
+                    <Popover.Target>
+                        <Button size="lg" rightSection={<IconLogin2 />}>
+                            {"Join Us ".toUpperCase()}
+                        </Button>
+                    </Popover.Target>
+                    <Popover.Dropdown>test</Popover.Dropdown>
+                </Popover>
+                <Button
+                    onClick={() => navigate({ to: "/posts" })}
+                    size="lg"
+                    color="pink"
+                    rightSection={<IconBooks />}
+                >
+                    Look up the posts
+                </Button>
+            </Group>
         </Stack>
     );
 };

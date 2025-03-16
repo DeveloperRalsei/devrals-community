@@ -1,9 +1,9 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "module": "CommonJS",
-    "outDir": "dist"
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "module": "CommonJS",
+        "outDir": "dist"
+    },
+    "include": ["src/**/*", "mock-data/**/*"],
+    "exclude": ["node_modules"]
 }

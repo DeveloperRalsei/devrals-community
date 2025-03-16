@@ -21,7 +21,7 @@ const queryClient = new QueryClient();
 
 createRoot(document.getElementById("app")!).render(
     <React.StrictMode>
-        <MantineProvider theme={theme} defaultColorScheme="dark">
+        <MantineProvider theme={theme} forceColorScheme="dark">
             <QueryClientProvider client={queryClient}>
                 <RouterProvider router={router} />
             </QueryClientProvider>

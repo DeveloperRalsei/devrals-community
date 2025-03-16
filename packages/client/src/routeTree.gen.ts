@@ -13,12 +13,19 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as PostsImport } from './routes/posts'
 
 // Create Virtual Routes
 
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
+
+const PostsRoute = PostsImport.update({
+  id: '/posts',
+  path: '/posts',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexLazyRoute = IndexLazyImport.update({
   id: '/',
@@ -37,6 +44,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/posts': {
+      id: '/posts'
+      path: '/posts'
+      fullPath: '/posts'
+      preLoaderRoute: typeof PostsImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -44,32 +58,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
+  '/posts': typeof PostsRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
+  '/posts': typeof PostsRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
+  '/posts': typeof PostsRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/posts'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/posts'
+  id: '__root__' | '/' | '/posts'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
+  PostsRoute: typeof PostsRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
+  PostsRoute: PostsRoute,
 }
 
 export const routeTree = rootRoute
@@ -82,11 +101,15 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/posts"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/posts": {
+      "filePath": "posts.tsx"
     }
   }
 }

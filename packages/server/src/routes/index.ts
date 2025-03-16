@@ -1,3 +1,1 @@
-import meowRoutes from "./meow.route";
-
-export { meowRoutes };
+export { default as postsRoute } from "./posts.route";

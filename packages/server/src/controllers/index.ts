@@ -1,1 +1,1 @@
-export * from "./meow.controller";
+export * from "./posts.controller";

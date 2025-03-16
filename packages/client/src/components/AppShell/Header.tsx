@@ -14,7 +14,7 @@ export const Header = ({
                     onClick={navbar.toggle}
                     hiddenFrom="sm"
                 />
-                <Text fz={"h2"}>Ralsei's</Text>
+                <Text fz={"h2"}>Ralsei Fan Community</Text>
             </Group>
         </Group>
     </AppShellHeader>
